@@ -1,0 +1,2 @@
+#!/bin/bash
+$PYCODE -c 'print(f"Best School: {88+10}")'
