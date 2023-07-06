@@ -1,61 +1,28 @@
-A test to for adding two inteter
+#!/usr/bin/python3
+"""
+Module that contains one function
 
-Import Python module + collections
->>> import sys
->>> sys.path.insert(1, '../')
->>> lib = __import__("0-add_integer")
->>> add_integer = lib.add_integer
+add_interger: performs simple addition between two integer or floats numbers
+Examles:
+    add_integer(10, 5)
+"""
 
-# Normal addition test
->>> add_integer(0)
-98
->>> add_integer(-1)
-97
->>> add_integer(10.5)
-108
 
-# Type Errors
->>> add_integer(10+5j)
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
->>> add_integer([])
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
->>> add_integer({})
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
->>> add_integer(set())
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
+def add_integer(a, b=98):
+    """Simple function that adds 2 integers.
 
->>> add_integer("")
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
-
-# Two input addition type errors
->>> add_integer(10, 10+5j)
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
->>> add_integer(10, [])
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
->>> add_integer(10, {})
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
->>> add_integer(10, set())
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
-
->>> add_integer(10, "")
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
+    Args:
+        a(int or float): first value
+        b(int or float): second value
+    Raises:
+        TypeError: if a or b are not integers or floats
+    Returns:
+        a + b value
+    """
+    add = 0
+    if not a or (type(a) not in (int, float)):
+        raise TypeError("a must be an integer")
+    if not b or (type(b) not in (int, float)):
+        raise TypeError("b must be an integer")
+    add = int(a) + int(b)
+    return add

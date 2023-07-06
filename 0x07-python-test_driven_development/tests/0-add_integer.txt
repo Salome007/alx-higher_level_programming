@@ -1,61 +1,99 @@
-A test to for adding two inteter
+The ``0-add_integer`` module
+======================
 
-Import Python module + collections
->>> import sys
->>> sys.path.insert(1, '../')
->>> lib = __import__("0-add_integer")
->>> add_integer = lib.add_integer
+Using ``add_interger``
+-------------------
 
-# Normal addition test
->>> add_integer(0)
-98
->>> add_integer(-1)
-97
->>> add_integer(10.5)
-108
 
-# Type Errors
->>> add_integer(10+5j)
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
->>> add_integer([])
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
->>> add_integer({})
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
->>> add_integer(set())
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
+Numbers
+=======
 
->>> add_integer("")
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
+``add_integer()`` returns the sum of its arguments.  For numbers,
+that value is equivalent to using the ``+`` operator.
 
-# Two input addition type errors
->>> add_integer(10, 10+5j)
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
->>> add_integer(10, [])
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
->>> add_integer(10, {})
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
->>> add_integer(10, set())
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
 
->>> add_integer(10, "")
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
+::
+	>>> add_integer = __import__('0-add_integer').add_integer
+	
+	test module docstring
+    >>> m = __import__("0-add_integer").__doc__
+	>>> len(m) > 1
+	True
+
+test function docstring
+    >>> f = __import__("0-add_integer").add_integer.__doc__
+    >>> len(f) > 1
+    True
+    
+	>>> add_integer(1, 5)
+	6
+	>>> add_integer(1.55462, 8.5472)
+	9
+	>>> add_integer(2, 12.55879412245587854558)
+	14
+	>>> add_integer(2.2400000000000000000000878, 188795)
+	188797
+	>>> add_integer(0.88888)
+	98
+	>>> add_integer(1)
+	99
+
+
+Not Numbers
+===========
+
+
+	>>> add_integer("a", 98)
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+	>>> add_integer(44, "hello")
+	Traceback (most recent call last):
+		...
+	TypeError: b must be an integer
+	>>> add_integer(None)
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+	>>> add_integer("hello", "world")
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+	
+test regular addition:
+	>>> add_integer(2, 3)
+	5
+
+test negative input
+	>>> add_integer(2, -3)
+	-1
+	>>> add_integer(-3, -1)
+	-4
+
+test float input
+	>>> add_integer(2.1, 5)
+	7
+	>>> add_integer(3, 1.9)
+	4
+
+test NaN as input
+	>>> add_integer(float('nan'), 1)
+	Traceback (most recent call last):
+	...
+	ValueError: cannot convert float NaN to integer
+
+test infinty
+	>>> add_integer(1, float('inf'))
+	Traceback (most recent call last):
+	...
+	OverflowError: cannot convert float infinity to integer
+
+test long numbers:
+	>>> add_integer(999999999999999999999999999999, 1.0000000000000000)
+	1000000000000000000000000000000
+
+test bool input
+	>>> add_integer(True, 2)
+	Traceback (most recent call last):
+        ...
+        TypeError: a must be an integer
