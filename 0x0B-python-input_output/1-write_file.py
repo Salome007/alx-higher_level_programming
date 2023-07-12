@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-"""
-This function reads files
-"""
 
-def read_file(filename=""):
+def write_file(filename="", text=""):
     """
-    This function reads a file and print its content
+    This function writes in a file, if it doesnt exists, it creates one
     """
-    with open(filename, encoding="utf-8") as _file:
-        print(_file.read(), end="")
+    with open(filename, mode="w", encoding="utf-8") as _file:
+        _file.write(text)
+
+    return (len(text))
