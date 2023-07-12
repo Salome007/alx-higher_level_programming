@@ -4,7 +4,7 @@ This code converts dictionaries to JSON
 """
 
 
-import JSON
+import json
 
 
 def to_json_string(my_obj):
